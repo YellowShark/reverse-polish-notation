@@ -31,7 +31,7 @@ public class RPN implements Calculator {
             }
             return Float.toString(Float.parseFloat(stack.pop()));
         } else
-            return "Invalid input!!";
+            return "Invalid input.";
     }
 
     private boolean isValidExpression(String[] tokens) {
