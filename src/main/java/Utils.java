@@ -1,5 +1,5 @@
 public class Utils {
-    public static final String OPERATORS = "+-*/";
+    public static final String OPERATORS = "+-*/^";
 
     public static boolean isNum(String s) {
         try {

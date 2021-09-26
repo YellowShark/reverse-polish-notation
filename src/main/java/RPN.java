@@ -1,4 +1,3 @@
-import java.util.List;
 import java.util.Stack;
 
 public class RPN implements Calculator {
@@ -14,7 +13,7 @@ public class RPN implements Calculator {
         var tokens = expression.split(" ");
         if (isValidExpression(tokens)) {
             float x, y;
-            float result;
+            double result;
             String choice;
 
             for (String token : tokens) {
@@ -27,7 +26,7 @@ public class RPN implements Calculator {
                     x = Float.parseFloat(stack.pop());
                     result = execute(choice, new Operands(x, y));
 
-                    stack.push(Float.toString(result));
+                    stack.push(Double.toString(result));
                 }
             }
             return Float.toString(Float.parseFloat(stack.pop()));
@@ -43,7 +42,7 @@ public class RPN implements Calculator {
         return true;
     }
 
-    public float execute(String operator, Operands operands) {
+    public double execute(String operator, Operands operands) {
         switch (operator) {
             case "+" -> {
                 return operands.getFirst() + operands.getSecond();
@@ -56,6 +55,9 @@ public class RPN implements Calculator {
             }
             case "/" -> {
                 return operands.getFirst() / operands.getSecond();
+            }
+            case "^" -> {
+                return Math.pow(operands.getFirst(), operands.getSecond());
             }
         }
         throw new ArithmeticException("Unexpected token");

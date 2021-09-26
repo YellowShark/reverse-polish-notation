@@ -8,6 +8,7 @@ public class Main {
         System.out.println("Welcome to Reverse Polish Notation calculator!");
         System.out.println("https://en.wikipedia.org/wiki/Reverse_Polish_notation");
         System.out.println("With this program you can calculate your expressions.");
+        System.out.println("Available operators: +, -, *, /, ^");
         System.out.println("Example:");
         System.out.println("Input: 2 3 +");
         System.out.println("Output: 5");
