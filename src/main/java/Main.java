@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -13,7 +11,7 @@ public class Main {
         System.out.println("Input: 2 3 +");
         System.out.println("Output: 5");
         System.out.println("Also, if you want to input negative number, you can write it like that:\n(-1) = 0 1 -");
-        System.out.println("Input new expression ('=' end of expression):");
+        System.out.println("Input new expression here:");
 
         String expression = in.nextLine();
 
