@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         var in = new Scanner(System.in);
-        System.out.println("Welcome to Reverse Polish Notation calculator!");
+        System.out.println("Welcome to the Reverse Polish Notation calculator!");
         System.out.println("https://en.wikipedia.org/wiki/Reverse_Polish_notation");
         System.out.println("With this program you can calculate your expressions.");
         System.out.println("Available operators: +, -, *, /, ^");

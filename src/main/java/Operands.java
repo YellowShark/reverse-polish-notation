@@ -29,4 +29,12 @@ public class Operands {
     public int hashCode() {
         return Objects.hash(first, second);
     }
+
+    @Override
+    public String toString() {
+        return "Operands{" +
+                "first=" + first +
+                ", second=" + second +
+                '}';
+    }
 }
