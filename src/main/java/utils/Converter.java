@@ -9,14 +9,13 @@ public class Converter {
 
         for (int i = 0; i < exp.length(); ++i) {
             char c = exp.charAt(i);
-            if (Character.isLetterOrDigit(c)) {
+            if (Utils.isNum(String.valueOf(c))) {
                 if (result.length() > 0 && Utils.isOperator(String.valueOf(result.charAt(result.length() - 1))))
                     result.append(" ");
                 result.append(c);
                 if (i != exp.length() - 1 && Utils.isOperator(String.valueOf(exp.charAt(i + 1))))
                     result.append(" ");
-            }
-            else if (c == '(')
+            } else if (c == '(')
                 stack.push(c);
             else if (c == ')') {
                 while (!stack.isEmpty() && stack.peek() != '(') {

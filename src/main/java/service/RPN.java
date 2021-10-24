@@ -39,7 +39,7 @@ public class RPN implements Calculator {
             }
             return Float.toString(Float.parseFloat(stack.pop()));
         } else
-            return "Invalid input.";
+            throw new ArithmeticException("Invalid input.");
     }
 
     private double execute(String operator, Operands operands) {
