@@ -1,3 +1,11 @@
+package service;
+
+import domain.Calculator;
+import utils.Converter;
+import utils.Operands;
+import utils.Utils;
+import utils.Validator;
+
 import java.util.Objects;
 import java.util.Stack;
 
@@ -11,22 +19,21 @@ public class RPN implements Calculator {
 
     @Override
     public String calculate(String expression) {
-        var tokens = expression.split(" ");
-        if (isValidExpression(tokens)) {
+        if (Validator.isValid(expression)) {
+            var tokens = Converter.infixToPostfix(expression).split(" ");
             float x, y;
             double result;
-            String choice;
+            String operator;
 
             for (String token : tokens) {
                 if (!Utils.isOperator(token)) {
                     stack.push(token);
                 } else {
-                    choice = token;
-
+                    operator = token;
                     y = Float.parseFloat(stack.pop());
                     x = Float.parseFloat(stack.pop());
-                    result = execute(choice, new Operands(x, y));
 
+                    result = execute(operator, new Operands(x, y));
                     stack.push(Double.toString(result));
                 }
             }
@@ -35,15 +42,7 @@ public class RPN implements Calculator {
             return "Invalid input.";
     }
 
-    private boolean isValidExpression(String[] tokens) {
-        for (String token : tokens) {
-            if (!Utils.isOperator(token) && !Utils.isNum(token))
-                return false;
-        }
-        return true;
-    }
-
-    public double execute(String operator, Operands operands) {
+    private double execute(String operator, Operands operands) {
         switch (operator) {
             case "+" -> {
                 return operands.getFirst() + operands.getSecond();

@@ -1,3 +1,5 @@
+package utils;
+
 import java.util.Objects;
 
 public class Operands {
@@ -32,7 +34,7 @@ public class Operands {
 
     @Override
     public String toString() {
-        return "Operands{" +
+        return "utils.Operands{" +
                 "first=" + first +
                 ", second=" + second +
                 '}';

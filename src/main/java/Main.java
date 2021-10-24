@@ -1,3 +1,6 @@
+import domain.Calculator;
+import service.RPN;
+
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -13,7 +16,7 @@ public class Main {
             expression = in.nextLine();
             if (!Objects.equals(expression, EXIT)) {
                 Calculator calculator = new RPN();
-                var result = calculator.calculate(Converter.infixToPostfix(expression));
+                var result = calculator.calculate(expression);
                 System.out.println(result);
             }
         } while (!expression.equals(EXIT));
