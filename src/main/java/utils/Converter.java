@@ -4,16 +4,17 @@ import java.util.Stack;
 
 public class Converter {
     public static String infixToPostfix(String exp) {
+        var expression = exp.trim();
         StringBuilder result = new StringBuilder();
         Stack<Character> stack = new Stack<>();
 
-        for (int i = 0; i < exp.length(); ++i) {
-            char c = exp.charAt(i);
+        for (int i = 0; i < expression.length(); ++i) {
+            char c = expression.charAt(i);
             if (Utils.isNum(String.valueOf(c))) {
                 if (result.length() > 0 && Utils.isOperator(String.valueOf(result.charAt(result.length() - 1))))
                     result.append(" ");
                 result.append(c);
-                if (i != exp.length() - 1 && Utils.isOperator(String.valueOf(exp.charAt(i + 1))))
+                if (i != expression.length() - 1 && Utils.isOperator(String.valueOf(expression.charAt(i + 1))))
                     result.append(" ");
             } else if (c == '(')
                 stack.push(c);
