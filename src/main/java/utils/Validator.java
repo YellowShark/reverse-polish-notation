@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.ArrayList;
+
 public class Validator {
     public static boolean isValid(String expression) {
         return withoutInvalidSymbols(expression) && validExpression(expression);
@@ -7,7 +9,7 @@ public class Validator {
 
     private static boolean withoutInvalidSymbols(String expression) {
         for (String token : expression.split("")) {
-            if (!Utils.isOperator(token) && !Utils.isNum(token))
+            if (!Utils.isOperator(token) && !Utils.isNum(token) && !Utils.isBracket(token))
                 return false;
         }
         return true;
@@ -37,14 +39,18 @@ public class Validator {
     }
 
     private static boolean validBrackets(String expression) {
-        var leftBracketsCount = 0;
-        var rightBracketsCount = 0;
+        var brackets = new ArrayList<String>();
         for (String token : expression.split("")) {
-            if (token.equals("("))
-                leftBracketsCount++;
-            else if(token.equals(")"))
-                rightBracketsCount++;
+            if (Utils.isBracket(token))
+                brackets.add(token);
         }
-        return leftBracketsCount == rightBracketsCount;
+        if (brackets.size() == 0) return true;
+        if (brackets.size() % 2 == 1) return false;
+        for (int i = 0; i < brackets.size() / 2; i++) {
+            if (!(brackets.get(i).equals("(") && brackets.get(brackets.size() - 1 - i).equals(")"))) {
+                return false;
+            }
+        }
+        return true;
     }
 }
